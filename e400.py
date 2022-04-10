@@ -130,24 +130,80 @@ for i in range(tc):
     print(sum(dp[n]) % 1000000009)
 """
 ###
+"""
+print("--- 10844 쉬운 계단 수 ---")
+
+from sys import stdin
 
 
+n = int(stdin.readline())
+
+stairs = [[0] * 10 for _ in range(n + 1)]
+
+# 초기값 설정
+stairs[1] = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+for i in range(2, n + 1):
+    # 계단 수가 0으로 끝나는 경우
+    stairs[i][0] = stairs[i - 1][1]
+    # 계단 수가 9로 끝나는 경우
+    stairs[i][9] = stairs[i - 1][8]
+    
+    # 계단 수가 1~8로 끝나는 경우
+    for j in range(1, 9):
+        stairs[i][j] = stairs[i - 1][j - 1] + stairs[i - 1][j + 1]
 
 
+print(sum(stairs[n]) % 1000000000)
+"""
+###
+"""
+print("--- 2193 이친수 ---")
 
+N=int(input())
+dp=[0]*(91)
+dp[1]=1
+dp[2]=1
+for i in range(2,N+1):
+  dp[i]=dp[i-1]+dp[i-2]
+print(dp[N])
+"""
+###
+"""
+print("--- 11053 가장 긴 증가하는 부분 수열 ---")
 
+n = int(input())
+a = list(map(int, input().split()))
+dp = [0 for i in range(n)]
+for i in range(n):
+    for j in range(i):
+        if a[i] > a[j] and dp[i] < dp[j]:
+            dp[i] = dp[j]
+    dp[i] += 1
+print(max(dp))
+"""
+###
+print("--- 14002 가장 긴 증가하는 부분 수열 4 ---")
 
+N = int(input())
+arr = list(map(int, input().split()))
+dp = [1]*N
 
+for i in range(1, N):
+    for j in range(i):
+        if arr[i]>arr[j]:
+            dp[i] = max(dp[i], dp[j]+1)
 
-
-
-
-
-
-
-
-
-
+print(max(dp))
+order = max(dp)
+lst = []
+for i in range(N-1, -1, -1):
+    if dp[i]==order:
+        lst.append(arr[i])
+        order-=1
+lst.reverse()
+for i in lst:
+    print(i, end=' ')
 
 
 
