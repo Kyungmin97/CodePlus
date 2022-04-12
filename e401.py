@@ -54,17 +54,78 @@ for i in range(2, 1001):
 print(sum(s[n]) % 10007)
 """
 ###
+"""
+print("--- 1932 정수 삼각형 ---")
+n = int(input())
+t = []
+for i in range(n):
+    t.append(list(map(int, input().split())))
+k = 2
+for i in range(1, n):
+    for j in range(k):
+        if j == 0:
+            t[i][j] = t[i][j] + t[i - 1][j]
+        elif i == j:
+            t[i][j] = t[i][j] + t[i - 1][j - 1]
+        else:
+            t[i][j] = max(t[i - 1][j - 1], t[i - 1][j]) + t[i][j]
+    k += 1
+print(max(t[n - 1]))
+"""
+###
+"""
+print("--- 11055 가장 큰 증가 부분 수열 ---")
+n = int(input())
+t = list(map(int, input().split()))
+for i in range(n):
+    print(t[i])
+"""
 
+"""
+import sys 
+n = int(sys.stdin.readline().strip()) 
+a = [int(x) for x in sys.stdin.readline().split()] 
+dp = a[:] 
+for i in range(n): 
+  for j in range(i): 
+    if a[i] > a[j]: dp[i] = max(dp[i], dp[j] + a[i]) 
+print(max(dp))
+"""
 
+###
+"""
+print("--- 17404 RGB거리 2 ---")
+INF = 2147000000
+n = int(input())
+rgb = []
+ans = INF
+for _ in range(n):
+    rgb.append(list(map(int, input().split())))
 
+for i in range(3):
+    dp = [[INF, INF, INF] for _ in range(n)]
+    dp[0][i] = rgb[0][i]
+    for j in range(1, n):
+        dp[j][0] = rgb[j][0] + min(dp[j-1][1], dp[j-1][2])
+        dp[j][1] = rgb[j][1] + min(dp[j-1][0], dp[j-1][2])
+        dp[j][2] = rgb[j][2] + min(dp[j-1][0], dp[j-1][1])
 
+    for j in range(3):
+        if i != j:
+            ans = min(ans, dp[-1][j])
+print(ans)
+"""
 
-
-
-
-
-
-
-
-
+"""
+print("--- 2225 합분해 ---")
+n, k = map(int, input().split())
+s = [[0] * 201 for i in range(201)]
+for i in range(201):
+    s[i][1] = 1
+for i in range(1, 201):
+    for j in range(201):
+        for l in range(j + 1):
+            s[j][i] += s[l][i - 1]
+print(s[n][k] % 1000000000)
+"""
 
