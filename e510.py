@@ -61,6 +61,7 @@ def f():
 f()
 """
 
+"""
 print("--- 15652 N과 M (4) ---")
 n, m = map(int, input().split())
 
@@ -72,13 +73,37 @@ def f():
     return
 
   for i in range(1, n + 1):
+    if s:
+      if i < max(s):
+        continue
     s.append(i)
     f()
     s.pop()
 
 f()
+"""
 
+"""
+print("--- 15654 N과 M (5) ---")
+n, m = map(int, input().split())
 
+s = []
+s2=list(map(int, input().split()))
+s2.sort()
+def f():
+  if len(s) == m:
+    print(' '.join(map(str, s)))
+    return
+
+  for i in s2:
+    if i in s:
+      continue
+    s.append(i)
+    f()
+    s.pop()
+
+f()
+"""
 
 
 
