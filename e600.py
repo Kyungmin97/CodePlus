@@ -93,10 +93,47 @@ for i in range(1,n+1):
 
 print(answer)
 """
-
+"""
 print("--- 1707 이분 그래프 ---")
 
+def dfs(v,group):
+  visited[v]=group
+  for i in graph[v]:
+    if visited[i]==0:
+      if not dfs(i,-group):
+        return False
+    elif visited[i]==visited[v]:
+      return False
+  return True
 
+
+k=int(input())
+for _ in range(k):
+  v,e=map(int,input().split())
+  graph=[[] for i in range(v+1)]
+  visited=[0]*(v+1)
+  for i in range(e):
+    x,y=map(int,input().split())
+    graph[x].append(y)
+    graph[y].append(x)
+  bipatite=True
+
+  for i in range(1,v+1):
+    if visited[i]==0:
+      bipatite=dfs(i,1)
+      if not bipatite:
+        break
+
+  print('YES' if bipatite else 'NO')
+  """
+
+print("--- 2667 단지번호붙이기  ---")
+
+n=int(input())
+graph=[]
+for i in range(n):
+  graph.append(str(input()))
+print(graph)
 
 
 
