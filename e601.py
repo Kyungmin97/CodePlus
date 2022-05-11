@@ -36,12 +36,56 @@ print('No')
 
 print("--- 16947 서울 지하철 2호선  ---")
 
+import sys
+sys.setrecursionlimit(10**5)
+n = int(input())
+array = [[i] for i in range(0,n+1)]
+for _ in range(n):
+    a, b = map(int,input().split())
+    array[a].append(b)
+    array[b].append(a)
+visit = [False] * (n+1)
+surcle = []
 
+def DFS(x,start,v):
+    visit[x] = True
+    
+    if x in array[start] or x == start:
+        if v >= 3:
+            surcle.append(x)
+            return
+    
+    for i in array[x]:
+        if visit[i] == False:
+            DFS(i,start,v+1)
+            visit[i] = False
 
+for i in range(1,n+1):
+    DFS(i,i,1)
+    visit[i] = False
 
+t = n+1
 
+def mmin(start,v):
+    global t
+    visit[start] = True
+    for i in array[start]:
+        if i in surcle:
+            t = min(t,v)
+            return
+        if visit[i] != True:
+            mmin(i,v+1)
+            visit[i] = False
+    
+brray = []
+for i in range(1,n+1):
+    if i in surcle:
+        brray.append(0)
+    else:
+        mmin(i,1)
+        brray.append(t)
+        t = n+1
+        visit[i] = False
 
-
-
-
+print(*brray)
 
