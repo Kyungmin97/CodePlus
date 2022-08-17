@@ -1,2 +1,2 @@
-import e601
+from CodingTest import 수학
 
