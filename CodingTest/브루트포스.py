@@ -1,4 +1,4 @@
-
+"""
 print("\tQuestion "+"3085")
 
 n = int(input())
@@ -47,3 +47,28 @@ for i in range(n):
             array[j][i], array[j+1][i] = array[j+1][i], array[j][i]
     
 print(maxCount)
+"""
+
+print("\tQuestion "+"1476")
+
+e,s,m=map(int,input().split())
+
+cnt=0
+a,b,c=0,0,0
+while(True):
+  cnt+=1
+  a+=1
+  b+=1
+  c+=1
+  if a>15:
+    a-=15
+  if b>28:
+    b-=28
+  if c>19:
+    c-=19
+  if a==e and b==s and c== m:
+    break
+
+print(cnt)
+
+
