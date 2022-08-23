@@ -48,7 +48,7 @@ for i in range(n):
     
 print(maxCount)
 """
-
+"""
 print("\tQuestion "+"1476")
 
 e,s,m=map(int,input().split())
@@ -70,5 +70,22 @@ while(True):
     break
 
 print(cnt)
+"""
 
+print("\tQuestion "+"1107")
+n = int(input())
+m = int(input())
+nlist=set()
+if(m):
+  nlist = set(input().split())
+answer=abs(n-100)
+
+for num in range(1000001):
+  for i in str(num):
+    if i in nlist:
+      break
+  else:
+    answer=min(answer,abs(n-num)+len(str(num)))
+      
+print(answer)
 
