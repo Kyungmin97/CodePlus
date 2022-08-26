@@ -91,7 +91,7 @@ print(answer)
 """
 
 #Question 14500
-
+"""
 def dfs(x,y,cnt,depth):
   dx=[1,0,-1,0]
   dy=[0,1,0,-1]
@@ -157,6 +157,29 @@ for i in range(n):
   for j in range(m):
     fuckyou(j,i,n,m)
 print(answer)
-  
+"""  
+#Question 6064
+import math
+t=int(input())
+for _ in range(t):
+  a=1
+  b=1
+  cnt=1
+  sw=False
+  m,n,x,y=map(int,input().split())
+  if a==x and b==y:
+    print(cnt)
+    continue
+  for i in range(int(m*n/math.gcd(m,n))):
+    cnt+=1
+    a+=1
+    b+=1
+    if a%m==x and b%n==y:
+      print(cnt)
+      sw=True
+      break
+  if sw==False:
+    print(-1)
+    
 
 
